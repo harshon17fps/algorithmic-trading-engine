@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qengine"
+version = "0.1.0"
+description = "Event-driven, multi-asset algorithmic trading engine and backtester"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+]
+
+[project.optional-dependencies]
+yfinance = ["yfinance>=0.2.40"]
+dev = ["pytest>=8.0", "mypy>=1.10", "pandas-stubs"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+ignore_missing_imports = true
